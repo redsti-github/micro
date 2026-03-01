@@ -854,16 +854,6 @@ func (h *BufPane) Autocomplete() bool {
 		return false
 	}
 
-	if h.Cursor.X == 0 {
-		return false
-	}
-	r := h.Cursor.RuneUnder(h.Cursor.X)
-	prev := h.Cursor.RuneUnder(h.Cursor.X - 1)
-	if !util.IsAutocomplete(prev) || util.IsWordChar(r) {
-		// don't autocomplete if cursor is within a word
-		return false
-	}
-
 	if b.HasSuggestions {
 		b.CycleAutocomplete(true)
 		return true
