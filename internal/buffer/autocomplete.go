@@ -63,7 +63,7 @@ func (b *Buffer) CycleAutocomplete(forward bool) {
 		if !bytes.Equal(word, activeWord) {
 			continue
 		}
-		
+
 		b.AutocompleteSingle(c, prevSuggestion)
 	}
 
@@ -82,7 +82,7 @@ func (b *Buffer) AutocompleteSingle(c *Cursor, prevSuggestion int) {
 	if prevSuggestion < len(b.Suggestions) && prevSuggestion >= 0 {
 		start = end.Move(-util.CharacterCountInString(b.Completions[prevSuggestion]), b)
 	}
-	
+
 	b.Replace(start, end, b.Completions[b.CurSuggestion])
 }
 
